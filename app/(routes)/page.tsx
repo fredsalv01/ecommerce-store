@@ -3,11 +3,12 @@ import getProducts from "@/actions/get-products";
 import Billboard from "@/components/billboard";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
+import { Product } from "@/types";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  const products = await getProducts({
+  const products: Product[] = await getProducts({
     isFeatured: true,
   });
   const billboard = await getBillboard("d8d21a61-d33e-411f-8e98-dd8e98fae97c");
