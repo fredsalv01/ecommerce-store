@@ -1,22 +1,26 @@
 import { Product } from "@/types";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/Button";
 import { Heart, ShoppingCart } from "lucide-react";
+import useCart from "@/hooks/use-cart";
 
 interface InfoProps {
   data: Product;
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {
+  const cart = useCart();
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    cart.addItem(data);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      {/* <div className="mt-3 items-end justify-between">
-        <p className="text-2xl text-gray-900">
-          <Currency value={data?.price} />
-        </p>
-      </div> */}
+
       <div className="flex items-center justify-start gap-10 mt-4">
         <Currency value={Number(data?.price) - Number(data?.price) * 0.08} />
 
@@ -41,7 +45,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10 text-sm flex items-center justify-between gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button onClick={onAddToCart} className="flex items-center gap-x-2">
           Agregar al carrito
           <ShoppingCart className="hidden md:block" size={20} />
         </Button>
