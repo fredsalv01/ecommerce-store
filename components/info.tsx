@@ -1,4 +1,5 @@
 "use client"
+
 import { Product } from "@/types";
 import React, { MouseEventHandler } from "react";
 import Currency from "@/components/ui/currency";
