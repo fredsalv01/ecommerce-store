@@ -7,13 +7,12 @@ import Summary from "./components/summary";
 
 const CartPage = () => {
   const [isMounted, setIsMounted] = React.useState(false);
-
+  
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
-
   const cart = useCart();
-
+  
   if (!isMounted) return null;
 
   return (
