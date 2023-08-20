@@ -57,7 +57,7 @@ const Summary = () => {
           <Currency value={totalPrice - totalPrice * 0.08} />
         </div>
       </div>
-      <Button onClick={onCheckout} className="w-full mt-6">Checkout</Button>
+      <Button disabled={items.length === 0} onClick={onCheckout} className="w-full mt-6">Checkout</Button>
     </div>
   );
 };
