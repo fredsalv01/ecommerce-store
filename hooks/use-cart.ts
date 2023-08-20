@@ -32,7 +32,6 @@ const useCart = create(
       },
       removeAll: () => {
         set({ items: [] });
-        toast.success("Carrito Limpio.");
       },
     }),
     {
